@@ -21,12 +21,16 @@ const DateCarousel = ({
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     
     const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
     
     let dayName = days[date.getDay()];
     
-    // Replace with Today if applicable
+    // Replace with Today/Tomorrow if applicable
     if (date.toDateString() === today.toDateString()) {
       dayName = 'Today';
+    } else if (date.toDateString() === tomorrow.toDateString()) {
+      dayName = 'Tomorrow';
     }
     
     return {
@@ -101,9 +105,15 @@ const DateCarousel = ({
       <div className="flex items-center justify-end mb-4">
         <DatePicker onDateSelect={handleDatePickerSelect} />
       </div>      
-      <h2 className="text-gray-800 text-xl font-bold mt-4">
+
+      <div className='flex justify-between mt-12'>
+      <h2 className="text-gray-800 text-base font-bold ">
         {selectedDate ? formatDateDisplay(selectedDate).full : 'Select a Date'}
       </h2>
+                    <p className="text-gray-600 text-xs ">Time Zone: EDT</p>
+
+      </div>
+
     </div>
   );
 };

@@ -107,7 +107,7 @@ const ApartmentTourScheduler = () => {
             <div className="p-6 md:p-8">
               <UrgencyBanner />
                   <div className="border-b border-gray-200 pb-4 mb-8">
-      <h3 className="text-base font-semibold text-gray-900">Select date and Time</h3>
+      <h3 className="text-xl font-semibold text-gray-900">Select date and Time</h3>
       <p className="mt-2 max-w-4xl text-sm text-gray-500">
         Choose your preferred date and time for a personalized apartment tour. Tours are 30 minutes long and include a walkthrough of all amenities.
       </p>
@@ -131,7 +131,7 @@ const ApartmentTourScheduler = () => {
                 onDateSelect={setSelectedDate}
               />
 
-              <div className="text-gray-600 text-xs mb-4">Time Zone: EDT</div>
+
 
               <TimeSlotGrid
                 timeSlotAvailability={timeSlotAvailability}
