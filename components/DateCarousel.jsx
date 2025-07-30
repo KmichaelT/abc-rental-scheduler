@@ -19,11 +19,21 @@ const DateCarousel = ({
   const formatDateDisplay = (date) => {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    
+    const today = new Date();
+    
+    let dayName = days[date.getDay()];
+    
+    // Replace with Today if applicable
+    if (date.toDateString() === today.toDateString()) {
+      dayName = 'Today';
+    }
+    
     return {
-      day: days[date.getDay()],
+      day: dayName,
       date: date.getDate(),
       month: months[date.getMonth()],
-      full: `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+      full: `${dayName}, ${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
     };
   };
 
@@ -56,7 +66,7 @@ const DateCarousel = ({
               disabled={availability.status === 'unavailable'}
               className={`flex-1 min-w-[110px] p-3 rounded-lg border transition-all ${
                 isSelected
-                  ? 'border-blue-500 bg-blue-50'
+                  ? 'border-blue-600 bg-blue-50'
                   : availability.status === 'unavailable'
                   ? 'border-gray-200 bg-gray-50 cursor-not-allowed'
                   : 'border-gray-200 hover:border-gray-300 bg-white'
@@ -66,7 +76,7 @@ const DateCarousel = ({
               <div className="flex items-center justify-between mb-2">
                 <div className="text-xs text-gray-500">{dateInfo.day}</div>
                 <div className={`text-sm font-semibold ${
-                  isSelected ? 'text-blue-600' : availability.status === 'unavailable' ? 'text-gray-400' : 'text-gray-800'
+                  isSelected ? 'text-blue-600' : availability.status === 'unavailable' ? 'text-gray-400' : 'text-gray-900'
                 }`}>
                   {dateInfo.month} {dateInfo.date}
                 </div>

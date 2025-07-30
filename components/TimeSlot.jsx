@@ -21,7 +21,7 @@ const TimeSlot = ({
     }
     
     // Available slots
-    return `${baseClasses} bg-white text-gray-700 hover:bg-gray-50 border border-gray-200`;
+    return `${baseClasses} bg-white text-gray-900 hover:bg-gray-50 border border-gray-200`;
   };
 
   return (
