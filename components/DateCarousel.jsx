@@ -10,11 +10,24 @@ const DateCarousel = ({
 }) => {
   const [dateRange, setDateRange] = useState([]);
   const [currentStartDate, setCurrentStartDate] = useState(startDate || new Date());
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const dates = generateBusinessDays(currentStartDate, 6);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    const count = isMobile ? 6 : 5;
+    const dates = generateBusinessDays(currentStartDate, count);
     setDateRange(dates);
-  }, [currentStartDate]);
+  }, [currentStartDate, isMobile]);
 
   const formatDateDisplay = (date) => {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -57,7 +70,9 @@ const DateCarousel = ({
     <div className="mb-4">
 
       
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 mb-4">
+      <div className={`grid gap-2 mb-4 ${
+        isMobile ? 'grid-cols-3' : 'grid-cols-5'
+      }`}>
         {dateRange.map((date, index) => {
           const dateInfo = formatDateDisplay(date);
           const availability = getDateAvailability(date);
