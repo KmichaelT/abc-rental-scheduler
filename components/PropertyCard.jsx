@@ -3,7 +3,7 @@ import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/re
 import { getUserAppointment, cancelUserAppointment } from '@/lib/mockData';
 
 const PropertyCard = ({ 
-  image = "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+  image = "/apartment.png",
   address = "123 Main St, Pittsburgh, PA 12345",
   agentName = "John Doe",
   onReschedule,
