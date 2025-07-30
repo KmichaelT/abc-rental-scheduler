@@ -57,7 +57,7 @@ const DateCarousel = ({
     <div className="mb-4">
 
       
-      <div className="flex flex-wrap gap-2 mb-4 ">
+      <div className="grid grid-cols-6 gap-2 mb-4">
         {dateRange.map((date, index) => {
           const dateInfo = formatDateDisplay(date);
           const availability = getDateAvailability(date);
@@ -68,7 +68,7 @@ const DateCarousel = ({
               key={index}
               onClick={() => onDateSelect(date)}
               disabled={availability.status === 'unavailable'}
-              className={`flex-1 min-w-[110px] p-3 rounded-lg border transition-all ${
+              className={`w-full p-3 rounded-lg border transition-all ${
                 isSelected
                   ? 'border-blue-600 bg-blue-50'
                   : availability.status === 'unavailable'
